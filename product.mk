@@ -25,3 +25,16 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Soong
 PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH)
+
+# Updater
+ifneq ($(filter $(TARGET_DEVICE), nx nx_tab),)
+PRODUCT_PACKAGES += \
+    NXLineageUpdaterCommonOverlay
+ifeq ($(WITH_GMS),true)
+PRODUCT_PACKAGES += \
+    NXLineageUpdaterGMSOverlay
+else
+PRODUCT_PACKAGES += \
+    NXLineageUpdaterNoGMSOverlay
+endif
+endif
