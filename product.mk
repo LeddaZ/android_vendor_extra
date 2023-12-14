@@ -2,4 +2,9 @@
 $(call inherit-product, external/ih8sn/product.mk)
 
 # Recovery
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += persist.vendor.recovery_update=true
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.recovery_update=true
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
