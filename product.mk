@@ -18,16 +18,12 @@ endif # WITH_GMS
 # ih8sn
 $(call inherit-product, external/ih8sn/product.mk)
 
-# Recovery
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.vendor.recovery_update=true
-
-# Soong
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
-
-# Updater
+# NX-specific stuff
 ifneq ($(filter $(TARGET_DEVICE), nx nx_tab),)
+# Apps
+PRODUCT_PACKAGES += \
+    GlimpsePrebuilt
+# Updater
 PRODUCT_PACKAGES += \
     NXLineageUpdaterCommonOverlay
 ifeq ($(WITH_GMS),true)
@@ -38,3 +34,11 @@ PRODUCT_PACKAGES += \
     NXLineageUpdaterNoGMSOverlay
 endif
 endif
+
+# Recovery
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.recovery_update=true
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
