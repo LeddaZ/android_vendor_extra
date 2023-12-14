@@ -22,7 +22,8 @@ $(call inherit-product, external/ih8sn/product.mk)
 ifneq ($(filter $(TARGET_DEVICE), nx nx_tab),)
 # Apps
 PRODUCT_PACKAGES += \
-    GlimpsePrebuilt
+    GlimpsePrebuilt \
+    JellyPrebuilt
 # Updater
 PRODUCT_PACKAGES += \
     NXLineageUpdaterCommonOverlay
