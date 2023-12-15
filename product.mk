@@ -1,3 +1,8 @@
+# Apps
+PRODUCT_PACKAGES += \
+    GlimpsePrebuilt \
+    JellyPrebuilt
+
 # GMS
 ifeq ($(WITH_GMS), true)
 ifeq ($(PRODUCT_IS_ATV),true)
@@ -18,12 +23,14 @@ endif # WITH_GMS
 # ih8sn
 $(call inherit-product, external/ih8sn/product.mk)
 
-# NX-specific stuff
-ifneq ($(filter $(TARGET_DEVICE), nx nx_tab),)
-# Apps
-PRODUCT_PACKAGES += \
-    GlimpsePrebuilt \
-    JellyPrebuilt
+# Recovery
+PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
+    persist.vendor.recovery_update=true
+
+# Soong
+PRODUCT_SOONG_NAMESPACES += \
+    $(LOCAL_PATH)
+
 # Updater
 PRODUCT_PACKAGES += \
     NXLineageUpdaterCommonOverlay
@@ -34,12 +41,3 @@ else
 PRODUCT_PACKAGES += \
     NXLineageUpdaterNoGMSOverlay
 endif
-endif
-
-# Recovery
-PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.vendor.recovery_update=true
-
-# Soong
-PRODUCT_SOONG_NAMESPACES += \
-    $(LOCAL_PATH)
