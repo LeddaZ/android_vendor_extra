@@ -19,7 +19,12 @@ android_app_import {
 	owner: "lineageos",
 	apk: "GlimpsePrebuilt.apk",
 	presigned: true,
-	overrides: ["Gallery", "Gallery2"],
+	overrides: [
+    "Gallery",
+    "Gallery2",
+    "Gallery3D",
+    "GalleryNew3D",
+  ],
 	dex_preopt: {
 		enabled: false,
 	},
